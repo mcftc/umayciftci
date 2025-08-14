@@ -1,0 +1,16 @@
+{
+  "tagline": "I’m not born yet, but I’m on the way ✨",
+  "hero_title": "Hi, I’m {name}! I’ll arrive on {date} 🍼",
+  "hero_body": "Would you like to get me a tiny gift? Let’s also support HAYTAP for my paw friends 💛",
+  "btn_gift": "Get me a gift",
+  "btn_haytap": "Donate to HAYTAP",
+  "iban_title": "Bank transfer (wire)",
+  "iban_holder": "Account holder",
+  "copy": "Copy",
+  "copied": "IBAN copied",
+  "amount_label": "Amount (₺)",
+  "pay_with_card": "Pay by Card",
+  "legal": "Legal",
+  "lang_tr": "Turkish",
+  "lang_en": "English"
+}

@@ -1,0 +1,16 @@
+{
+  "tagline": "ben daha doğmadım ama doğacağım ✨",
+  "hero_title": "Merhaba, ben {name}! {date}’te dünyaya geleceğim 🍼",
+  "hero_body": "Bana minik bir hediye almak ister misin? Pati kardeşlerimi de unutmayalım, HAYTAP'a destek olalım 💛",
+  "btn_gift": "Bana hediye al",
+  "btn_haytap": "HAYTAP’a bağış",
+  "iban_title": "Banka transferi (havale/EFT)",
+  "iban_holder": "Hesap sahibi",
+  "copy": "Kopyala",
+  "copied": "IBAN kopyalandı",
+  "amount_label": "Tutar (₺)",
+  "pay_with_card": "Kartla Öde",
+  "legal": "Yasal Not",
+  "lang_tr": "Türkçe",
+  "lang_en": "English"
+}
