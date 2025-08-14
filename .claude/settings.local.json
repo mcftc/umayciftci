@@ -8,7 +8,8 @@
       "Bash(pnpm lint:*)",
       "Bash(npm run dev:*)",
       "WebFetch(domain:localhost)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": [],

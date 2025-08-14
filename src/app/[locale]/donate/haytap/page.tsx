@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { PawPrint, Heart, ExternalLink } from "lucide-react"
+import { Heart, ExternalLink } from "lucide-react"
 
 export default async function DonateHaytapPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params

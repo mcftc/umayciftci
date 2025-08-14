@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export default async function DonateUmayPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const isTurkish = locale === 'tr'
@@ -183,9 +185,11 @@ export default async function DonateUmayPage({ params }: { params: Promise<{ loc
           
           <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-4">
             <div className="bg-white rounded-lg p-4 shadow-lg">
-              <img 
+              <Image 
                 src="https://storage.e.jimdo.com/cdn-cgi/image/quality=85,fit=scale-down,format=auto,width=1024,height=968/image/523380965/c5865a7f-bb6c-4ae5-8f50-edfdf205ebc7.jpg"
                 alt="QR Code"
+                width={250}
+                height={250}
                 className="w-full h-auto max-w-[250px] mx-auto"
               />
             </div>
