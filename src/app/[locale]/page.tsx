@@ -4,10 +4,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params
   
   const isTurkish = locale === 'tr'
-  const birthDate = new Date('2025-09-05')
-  const actualBirthDate = new Date('2025-09-02T02:00:00') // Born early at 02:00!
+  // Simple date calculation to avoid timezone issues
+  const dueDay = 5  // September 5
+  const birthDay = 2  // September 2
+  const daysEarly = dueDay - birthDay  // 5 - 2 = 3 days early
+  
+  const actualBirthDate = new Date('2025-09-02T02:00:00')
   const now = new Date()
-  const daysEarly = Math.ceil((birthDate.getTime() - actualBirthDate.getTime()) / (1000 * 60 * 60 * 24))
   const daysOld = Math.ceil((now.getTime() - actualBirthDate.getTime()) / (1000 * 60 * 60 * 24))
   
   return (
