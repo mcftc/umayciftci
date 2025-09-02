@@ -3,8 +3,8 @@ import Link from "next/link"
 import "../globals.css"
 
 export const metadata: Metadata = {
-  title: { default: "Umay Geliyor! 👶", template: "%s | Umay Geliyor!" },
-  description: "Ben daha doğmadım ama doğacağım! 5 Eylül 2025’te dünyaya geliyorum."
+  title: { default: "Umay Geldi! 👶🎉", template: "%s | Umay Geldi!" },
+  description: "Merhaba dünya! Ben Umay, 2 Eylül 2025'te 02:00'da dünyaya geldim! 3 gün erken deployment 🚀"
 }
 
 export default async function LocaleLayout({
@@ -20,7 +20,7 @@ export default async function LocaleLayout({
             <Link href={`/${locale}`} className="font-bold text-sm sm:text-base md:text-xl hover:scale-110 transition-transform flex items-center gap-1 sm:gap-2 group">
               <span className="text-2xl sm:text-3xl group-hover:animate-bounce">👶</span>
               <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">Umay.exe</span>
-              <span className="text-[10px] sm:text-xs bg-yellow-300 text-black px-1 sm:px-2 py-0.5 rounded-full">v0.9</span>
+              <span className="text-[10px] sm:text-xs bg-green-300 text-black px-1 sm:px-2 py-0.5 rounded-full animate-pulse">v1.0 LIVE</span>
             </Link>
             <nav className="hidden md:flex gap-6 text-sm items-center">
               <Link className="hover:text-blue-500 hover:scale-110 transition-all flex items-center gap-1" href={`/${locale}/donate/umay`}>
@@ -57,14 +57,14 @@ export default async function LocaleLayout({
               <span className="text-xl sm:text-2xl animate-pulse">👶</span>
               <p className="text-xs sm:text-sm font-medium">
                 {locale === 'tr' 
-                  ? "© 2025 Umay Çiftçi - Henüz doğmadım ama haklarım saklı!" 
-                  : "© 2025 Umay Çiftçi - Not born yet but rights reserved!"}
+                  ? "© 2025 Umay Çiftçi - Artık dünyada ve haklarım tam geçerli! 🎉" 
+                  : "© 2025 Umay Çiftçi - Now in the world and my rights are fully valid! 🎉"}
               </p>
             </div>
             <div className="text-[10px] sm:text-xs text-gray-500">
               {locale === 'tr'
-                ? "Bu site %100 karın içinden kodlandı. Bazı buglar olabilir, kusura bakmayın."
-                : "This site was 100% coded from the womb. Some bugs may occur, sorry."}
+                ? "Bu site karın içinden kodlandı, 2 Eylül 2025'te hastanede deploy edildi. Production ready! 🚀"
+                : "This site was coded from the womb, deployed at hospital on Sep 2, 2025. Production ready! 🚀"}
             </div>
             <div className="flex justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs">
               <span className="bg-green-100 text-green-700 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
@@ -74,7 +74,7 @@ export default async function LocaleLayout({
                 {locale === 'tr' ? "• GDO'suz" : "• GMO-Free"}
               </span>
               <span className="bg-purple-100 text-purple-700 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
-                {locale === 'tr' ? "• El Yapımı" : "• Handmade"}
+                {locale === 'tr' ? "• Yeni Doğan" : "• Newborn"}
               </span>
             </div>
           </div>
