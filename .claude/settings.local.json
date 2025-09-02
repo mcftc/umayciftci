@@ -10,7 +10,9 @@
       "WebFetch(domain:localhost)",
       "Bash(curl:*)",
       "Bash(npm run build:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(npx tsc:*)",
+      "Bash(pnpm install:*)"
     ],
     "deny": [],
     "ask": [],
