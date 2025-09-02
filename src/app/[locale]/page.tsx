@@ -133,7 +133,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               {isTurkish ? "🎉 Deployment Başarılı!" : "🎉 Deployment Successful!"}
             </h2>
             <div className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent mb-2">
-              {daysOld}
+              {daysOld-1 === 0 ? (isTurkish ? "Doğduğum Gün!" : "Day of Birth!") : `${daysOld} ${isTurkish ? "Günlük" : "Days Old"}`}
             </div>
             <p className="text-sm sm:text-base text-zinc-600 mb-3 sm:mb-4">
               {isTurkish ? `gün önce ${daysEarly} gün erken doğdum! 🚀` : `days old! Born ${daysEarly} days early! 🚀`}
