@@ -71,7 +71,7 @@ export default function BabyGames({ locale }: BabyGamesProps) {
   useEffect(() => {
     initMemoryGame()
     generateSequence()
-  }, [sequenceLevel])
+  }, [sequenceLevel]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Generate bubbles
   useEffect(() => {
@@ -91,7 +91,7 @@ export default function BabyGames({ locale }: BabyGamesProps) {
   const playSound = (type: 'giggle' | 'pop' | 'peekaboo' | 'success' | 'match') => {
     if (typeof window !== 'undefined') {
       try {
-        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+        const audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
         
         if (type === 'giggle') {
           const oscillator = audioContext.createOscillator()
@@ -156,7 +156,7 @@ export default function BabyGames({ locale }: BabyGamesProps) {
           oscillator.start(audioContext.currentTime)
           oscillator.stop(audioContext.currentTime + 0.2)
         }
-      } catch (error) {
+      } catch {
         // Silently fail if audio context is not available
       }
     }
