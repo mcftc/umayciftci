@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Heart, ExternalLink } from "lucide-react"
+import CopyButton from "@/components/CopyButton"
 
 export default async function DonateHaytapPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -69,15 +70,15 @@ export default async function DonateHaytapPage({ params }: { params: Promise<{ l
           
           <p className="text-lg text-gray-700 max-w-xl mx-auto mb-4">
             {isTurkish 
-              ? "Merhaba! Ben Umay 👶 Henüz doğmadım ama dünyaya geldiğimde sokak hayvanlarının da mutlu olmasını istiyorum!" 
-              : "Hi! I'm Umay 👶 Not born yet, but when I arrive, I want street animals to be happy too!"}
+              ? "Merhaba! Ben Umay 👶 Dünyaya geldim ve sokak hayvanlarının da mutlu olmasını çok istiyorum!" 
+              : "Hi! I'm Umay 👶 I'm here in the world, and I really want street animals to be happy too!"}
           </p>
           
           <div className="bg-white/70 rounded-xl p-4 max-w-md mx-auto border-2 border-yellow-300">
             <p className="text-sm font-medium text-gray-700">
               {isTurkish 
-                ? "💡 Bebek Mantığı: Eğer patili dostlarımız mutluysa, dünya daha güzel bir yer olur. Ben de mutlu bir dünyaya doğmak istiyorum!" 
-                : "💡 Baby Logic: If our paw friends are happy, the world becomes a better place. I want to be born into a happy world!"}
+                ? "💡 Bebek Mantığı: Eğer patili dostlarımız mutluysa, dünya daha güzel bir yer olur. Ben de mutlu bir dünyada büyümek istiyorum!"
+                : "💡 Baby Logic: If our paw friends are happy, the world becomes a better place. I want to grow up in a happy world!"}
             </p>
           </div>
         </div>
@@ -133,8 +134,8 @@ export default async function DonateHaytapPage({ params }: { params: Promise<{ l
           <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-xl p-4 mt-4">
             <p className="text-sm font-medium text-amber-800">
               <strong>{isTurkish ? "Umay'ın Sözü:" : "Umay's Promise:"}</strong> {isTurkish 
-                ? "Doğduğumda ilk işim bir sokak kedisini sevmek olacak! 🐱 (Tabii önce ellerimi koordine etmeyi öğrenirsem)" 
-                : "When I'm born, my first job will be to pet a street cat! 🐱 (If I learn to coordinate my hands first)"}
+                ? "En büyük hayalim bir sokak kedisini sevmek! 🐱 (Önce şu minik ellerimi tam koordine edeyim de)"
+                : "My biggest dream is to pet a street cat! 🐱 (Once I fully coordinate these tiny hands)"}
             </p>
           </div>
         </CardContent>
@@ -229,11 +230,9 @@ export default async function DonateHaytapPage({ params }: { params: Promise<{ l
               <div className="space-y-2">
                 {ibanList.filter(item => item.currency === "TL").map((item, index) => (
                   <div key={index} className="bg-white rounded-lg p-3 text-xs">
-                    <div className="flex justify-between items-start mb-1">
+                    <div className="flex justify-between items-start mb-1 gap-2">
                       <span className="font-semibold">{item.bank}</span>
-                      <button className="bg-green-500 text-white px-2 py-1 rounded text-xs hover:bg-green-600">
-                        {isTurkish ? "Kopyala" : "Copy"}
-                      </button>
+                      <CopyButton text={item.iban.replace(/\s/g, '')} locale={locale} />
                     </div>
                     <div className="font-mono bg-gray-50 p-2 rounded mt-1 break-all">
                       {item.iban}
@@ -251,11 +250,9 @@ export default async function DonateHaytapPage({ params }: { params: Promise<{ l
               <div className="space-y-2">
                 {ibanList.filter(item => item.currency !== "TL").map((item, index) => (
                   <div key={index} className="bg-white rounded-lg p-3 text-xs">
-                    <div className="flex justify-between items-start mb-1">
+                    <div className="flex justify-between items-start mb-1 gap-2">
                       <span className="font-semibold">{item.bank} ({item.currency})</span>
-                      <button className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600">
-                        {isTurkish ? "Kopyala" : "Copy"}
-                      </button>
+                      <CopyButton text={item.iban.replace(/\s/g, '')} locale={locale} />
                     </div>
                     <div className="font-mono bg-gray-50 p-2 rounded mt-1 break-all">
                       {item.iban}
@@ -272,9 +269,7 @@ export default async function DonateHaytapPage({ params }: { params: Promise<{ l
                   <span className="font-semibold text-sm">SWIFT Code:</span>
                   <span className="font-mono text-sm ml-2">TGBATRIS</span>
                 </div>
-                <button className="bg-purple-500 text-white px-2 py-1 rounded text-xs hover:bg-purple-600">
-                  {isTurkish ? "Kopyala" : "Copy"}
-                </button>
+                <CopyButton text="TGBATRIS" locale={locale} />
               </div>
             </div>
 

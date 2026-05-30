@@ -368,8 +368,8 @@ export default function MoreGamesPage({ params }: { params: Promise<{ locale: st
                                 </h1>
                                 <p className="text-gray-600 mt-2">
                                     {isTurkish
-                                        ? "Gelişmiş motor becerilerimi test et! (Henüz 2 günlükken bile pro gamer'ım 🎮)"
-                                        : "Test my advanced motor skills! (Already a pro gamer at 2 days old 🎮)"}
+                                        ? "Gelişmiş motor becerilerimi test et! (Minik bir bebeğim ama oyunlara bayılıyorum 🎮)"
+                                        : "Test my advanced motor skills! (I'm just a tiny baby but I love games 🎮)"}
                                 </p>
                             </div>
 
