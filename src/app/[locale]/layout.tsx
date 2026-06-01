@@ -23,6 +23,10 @@ export default async function LocaleLayout({
                     <span className="text-[10px] sm:text-xs bg-green-300 text-black px-1 sm:px-2 py-0.5 rounded-full animate-pulse">v1.0 LIVE</span>
                 </Link>
                 <nav className="hidden md:flex gap-6 text-sm items-center">
+                    <Link className="hover:text-pink-500 hover:scale-110 transition-all flex items-center gap-1" href={`/${locale}/davetiye`}>
+                        <span className="text-xl">🎉</span>
+                        <span className="font-medium">{locale === 'tr' ? 'Davetiye' : 'Invitation'}</span>
+                    </Link>
                     <Link className="hover:text-purple-500 hover:scale-110 transition-all flex items-center gap-1" href={`/${locale}/games`}>
                         <span className="text-xl">🎮</span>
                         <span className="font-medium">{locale === 'tr' ? 'Oyunlar' : 'Games'}</span>
@@ -46,6 +50,7 @@ export default async function LocaleLayout({
                 </nav>
                 {/* Mobile menu */}
                 <div className="md:hidden flex gap-2 sm:gap-3 items-center">
+                    <Link href={`/${locale}/davetiye`} className="text-xl sm:text-2xl hover:scale-110 transition-transform">🎉</Link>
                     <Link href={`/${locale}/games`} className="text-xl sm:text-2xl hover:scale-110 transition-transform">🎮</Link>
                     <Link href={`/${locale}/donate/umay`} className="text-xl sm:text-2xl hover:scale-110 transition-transform">🎁</Link>
                     <Link href={`/${locale}/donate/haytap`} className="text-xl sm:text-2xl hover:scale-110 transition-transform">🐾</Link>

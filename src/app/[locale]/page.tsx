@@ -22,6 +22,22 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
 
+        {/* ───────────────── DAVETİYE BANDI ───────────────── */}
+        <Link
+          href={`/${locale}/davetiye`}
+          className="group flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 px-5 py-3 text-center text-white shadow-lg transition-transform hover:scale-[1.02]"
+        >
+          <span className="text-2xl animate-bounce">🎉</span>
+          <span className="text-sm sm:text-base font-bold">
+            {tr
+              ? "Doğum günü partime davetlisin! 22 Ağustos 2026, 13.00 · Tayyare Cafe"
+              : "You're invited to my birthday party! Aug 22, 2026, 1 PM · Tayyare Cafe"}
+          </span>
+          <span className="rounded-full bg-white/25 px-3 py-1 text-xs font-bold whitespace-nowrap group-hover:bg-white/40 transition-colors">
+            {tr ? "Davetiyeyi aç →" : "Open invitation →"}
+          </span>
+        </Link>
+
         {/* ───────────────── HERO ───────────────── */}
         <section className="grid items-center gap-6 md:grid-cols-2 md:gap-10 pt-4">
           {/* Foto */}
@@ -69,8 +85,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
             <p className="text-sm text-zinc-500 max-w-md mx-auto md:mx-0">
               {tr
-                ? "Babam yüzbaşı, amcam ise yazılımcı — bu minik siteyi bana amcam hazırladı 💻 Ben de büyüyünce ne olurum bakalım, ama şimdilik işim gülmek, mama yemek ve uyumak 😴"
-                : "My dad's an army captain and my uncle's a developer — he built this little site for me 💻 No idea what I'll be when I grow up, but for now my job is giggling, milk and naps 😴"}
+                ? "Müjde! İlk dişim çıktı 🦷✨ Artık gülümsediğimde minik bir parıltı var. Şimdilik işim gülmek, mama yemek, uyumak ve tabii yeni dişimi herkese göstermek 😄"
+                : "Big news — my first tooth popped out 🦷✨ Now there's a little sparkle when I smile. For now my job is giggling, milk, naps, and showing everyone my brand-new tooth 😄"}
             </p>
 
             <div className="pt-2">
@@ -124,7 +140,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             {[
               { e: "👶", tr: "İlk nefes", en: "First breath", st: tr ? "tamamlandı" : "done" },
               { e: "😊", tr: "İlk gülümseme", en: "First smile", st: tr ? "tamamlandı" : "done" },
-              { e: "🦷", tr: "İlk diş", en: "First tooth", st: tr ? "geliyor!" : "incoming!" },
+              { e: "🦷", tr: "İlk diş", en: "First tooth", st: tr ? "çıktı! 🎉" : "popped! 🎉" },
               { e: "🍌", tr: "İlk ek gıda", en: "First solid food", st: tr ? "yumyum" : "yum yum" },
               { e: "🪑", tr: "Desteksiz oturma", en: "Sitting up solo", st: tr ? "başardım" : "nailed it" },
               { e: "🚼", tr: "Emekleme", en: "Crawling", st: tr ? "beta sürümde" : "in beta" },
@@ -231,8 +247,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="overflow-hidden">
             <div className="animate-slide text-xs sm:text-sm text-yellow-800">
               {tr
-                ? "🍼 Mama saatleri tıkır tıkır işliyor • 😄 Günün gülücük rekoru kırıldı • 🦷 İlk diş alarmı verildi • 🧸 Ayıcık en iyi arkadaş seçildi • 👏 El çırpma öğrenildi • 😴 Gece uykusu güncellemesi yüklendi • 🐾 Pati dostlara selam •"
-                : "🍼 Milk schedule running smoothly • 😄 New daily giggle record • 🦷 First tooth alert issued • 🧸 Teddy elected best friend • 👏 Clapping unlocked • 😴 Night-sleep update installed • 🐾 Shout-out to paw friends •"}
+                ? "🍼 Mama saatleri tıkır tıkır işliyor • 😄 Günün gülücük rekoru kırıldı • 🦷 İlk diş çıktı, kutlama zamanı • 🧸 Ayıcık en iyi arkadaş seçildi • 👏 El çırpma öğrenildi • 😴 Gece uykusu güncellemesi yüklendi • 🐾 Pati dostlara selam •"
+                : "🍼 Milk schedule running smoothly • 😄 New daily giggle record • 🦷 First tooth popped — time to celebrate • 🧸 Teddy elected best friend • 👏 Clapping unlocked • 😴 Night-sleep update installed • 🐾 Shout-out to paw friends •"}
             </div>
           </div>
         </section>
