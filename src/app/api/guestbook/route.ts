@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server"
-import { list, put } from "@vercel/blob"
 import { Resend } from "resend"
 import { z } from "zod"
+import { listEntries, saveEntry } from "@/lib/store"
+import { checkRate, getIp, isBot, isProfane } from "@/lib/spam"
 
 // Hatıra defteri — doğum günü kutlama notları.
-// Her not ayrı bir blob olarak yazılır (yarış/çakışma yok, veri kaybı olmaz).
+// Her not ayrı bir blob (yarış/çakışma yok). Spam koruması: honeypot + IP limiti + küfür filtresi.
 export const dynamic = "force-dynamic"
 
 const PREFIX = "guestbook/"
@@ -12,44 +13,23 @@ const PREFIX = "guestbook/"
 const schema = z.object({
   name: z.string().trim().min(1, "İsim gerekli").max(60),
   message: z.string().trim().min(1, "Mesaj gerekli").max(600),
+  website: z.string().optional(), // honeypot
 })
 
-export type GuestEntry = {
-  id: string
-  name: string
-  message: string
-  at: number
-}
+export type GuestEntry = { id: string; name: string; message: string; at: number }
 
 function escapeHtml(s: string) {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
 }
 
-// --- Notları getir (en yeni en üstte) ---
+// --- Notları getir (en yeni en üstte, _url gizlenir) ---
 export async function GET() {
   try {
-    const { blobs } = await list({ prefix: PREFIX })
-    const entries = (
-      await Promise.all(
-        blobs.map(async (b) => {
-          try {
-            const res = await fetch(b.url, { cache: "no-store" })
-            if (!res.ok) return null
-            const data = (await res.json()) as GuestEntry
-            return data
-          } catch {
-            return null
-          }
-        })
-      )
-    )
-      .filter((e): e is GuestEntry => !!e && typeof e.at === "number")
+    const raw = await listEntries<GuestEntry>(PREFIX)
+    const entries = raw
+      .filter((e) => typeof e.at === "number")
       .sort((a, b) => b.at - a.at)
-
+      .map(({ id, name, message, at }) => ({ id, name, message, at }))
     return NextResponse.json({ entries })
   } catch (err) {
     console.error("Guestbook GET error:", err)
@@ -59,18 +39,29 @@ export async function GET() {
 
 // --- Yeni not bırak ---
 export async function POST(req: Request) {
-  let body: unknown
+  let body: Record<string, unknown>
   try {
     body = await req.json()
   } catch {
     return NextResponse.json({ error: "Geçersiz istek" }, { status: 400 })
   }
 
+  // Honeypot — bota başarılı gibi davran ama kaydetme.
+  if (isBot(body)) return NextResponse.json({ ok: true, entry: null })
+
   const parsed = schema.safeParse(body)
   if (!parsed.success) {
     return NextResponse.json({ error: "Lütfen isim ve mesaj giriniz." }, { status: 400 })
   }
   const { name, message } = parsed.data
+
+  if (isProfane(`${name} ${message}`)) {
+    return NextResponse.json({ error: "Lütfen daha kibar bir mesaj yazalım 🙂" }, { status: 422 })
+  }
+
+  if (!checkRate(`gb:${getIp(req)}`, 5, 10 * 60 * 1000)) {
+    return NextResponse.json({ error: "Çok hızlı gönderiyorsun, biraz bekle 🙏" }, { status: 429 })
+  }
 
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     console.error("Guestbook: BLOB_READ_WRITE_TOKEN tanımlı değil")
@@ -82,17 +73,13 @@ export async function POST(req: Request) {
   const entry: GuestEntry = { id, name, message, at }
 
   try {
-    await put(`${PREFIX}${id}.json`, JSON.stringify(entry), {
-      access: "public",
-      contentType: "application/json",
-      addRandomSuffix: true,
-    })
+    await saveEntry(PREFIX, id, entry)
   } catch (err) {
     console.error("Guestbook put error:", err)
     return NextResponse.json({ error: "Not kaydedilemedi" }, { status: 502 })
   }
 
-  // Ev sahibine bildir (en iyi çaba — başarısız olursa not yine kayıtlı kalır).
+  // Ev sahibine bildir (en iyi çaba).
   const apiKey = process.env.RESEND_API_KEY
   const to = process.env.RSVP_TO
   if (apiKey && to) {

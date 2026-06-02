@@ -9,6 +9,7 @@ export default function RsvpForm() {
   const [open, setOpen] = useState(false)
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
+  const [hp, setHp] = useState("") // honeypot
   const [status, setStatus] = useState<Status>("idle")
   const [error, setError] = useState("")
 
@@ -24,7 +25,7 @@ export default function RsvpForm() {
       const res = await fetch("/api/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName: firstName.trim(), lastName: lastName.trim() }),
+        body: JSON.stringify({ firstName: firstName.trim(), lastName: lastName.trim(), website: hp }),
       })
       if (!res.ok) {
         const data = await res.json().catch(() => ({}))
@@ -64,6 +65,17 @@ export default function RsvpForm() {
         </div>
       ) : (
         <form onSubmit={submit} className="space-y-4">
+          {/* honeypot — kullanıcı görmez, botlar doldurur */}
+          <input
+            type="text"
+            name="website"
+            value={hp}
+            onChange={(e) => setHp(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute left-[-9999px] h-0 w-0 opacity-0"
+          />
           <h3 className="text-lg font-bold text-center text-zinc-800">Katılımını bildir 🎈</h3>
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="space-y-1">

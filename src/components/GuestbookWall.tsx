@@ -32,6 +32,7 @@ export default function GuestbookWall() {
   const [entries, setEntries] = useState<Entry[] | null>(null)
   const [name, setName] = useState("")
   const [message, setMessage] = useState("")
+  const [hp, setHp] = useState("") // honeypot
   const [status, setStatus] = useState<Status>("idle")
   const [error, setError] = useState("")
   const [justSent, setJustSent] = useState(false)
@@ -55,7 +56,7 @@ export default function GuestbookWall() {
       const res = await fetch("/api/guestbook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), message: message.trim() }),
+        body: JSON.stringify({ name: name.trim(), message: message.trim(), website: hp }),
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok || !data?.entry) throw new Error(data?.error || "Gönderilemedi")
@@ -78,6 +79,17 @@ export default function GuestbookWall() {
         onSubmit={submit}
         className="rounded-3xl bg-white/85 border-2 border-purple-100 p-5 sm:p-6 shadow-sm space-y-4"
       >
+        {/* honeypot — kullanıcı görmez, botlar doldurur */}
+        <input
+          type="text"
+          name="website"
+          value={hp}
+          onChange={(e) => setHp(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute left-[-9999px] h-0 w-0 opacity-0"
+        />
         <div className="text-center space-y-1">
           <div className="text-4xl">📖✨</div>
           <h3 className="text-lg font-bold text-zinc-800">Umay’a bir not bırak 💌</h3>
