@@ -3,7 +3,7 @@ import Link from "next/link"
 import "../globals.css"
 
 export const metadata: Metadata = {
-    title: { default: "Umay Geldi! 👶🎉", template: "%s | Umay Geldi!" },
+    title: { default: "Umay'ın Yeri 👶🎉", template: "%s | Umay'ın Yeri" },
     description: "Merhaba dünya! Ben Umay, 2 Eylül 2025'te 02:00'da dünyaya geldim! 3 gün erken deployment 🚀"
 }
 

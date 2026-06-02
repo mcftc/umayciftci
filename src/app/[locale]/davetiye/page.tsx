@@ -4,6 +4,9 @@ import Confetti from "@/components/Confetti"
 import FloatingThings from "@/components/FloatingThings"
 import RsvpForm from "@/components/RsvpForm"
 import ShareButtons from "@/components/ShareButtons"
+import PartyCountdown from "@/components/PartyCountdown"
+import AddToCalendar from "@/components/AddToCalendar"
+import GuestbookWall from "@/components/GuestbookWall"
 import { HERO_PHOTO } from "@/lib/photos"
 import { PARTY } from "@/lib/party"
 
@@ -93,16 +96,45 @@ export default function DavetiyePage() {
           </div>
         </section>
 
+        {/* ───────── GERİ SAYIM ───────── */}
+        <section className="rounded-3xl bg-gradient-to-br from-pink-50 to-purple-50 border-2 border-pink-100 p-5 sm:p-6">
+          <PartyCountdown />
+        </section>
+
         {/* ───────── KATILIM (RSVP) ───────── */}
         <section className="space-y-3">
           <h2 className="text-center text-2xl font-extrabold">Geliyor musun? ✋</h2>
           <RsvpForm />
         </section>
 
+        {/* ───────── TAKVİME EKLE ───────── */}
+        <section className="space-y-3">
+          <h2 className="text-center text-lg font-bold text-zinc-700">Unutmamak için takvimine ekle 🗓️</h2>
+          <AddToCalendar />
+        </section>
+
+        {/* ───────── MİNİK NOT ───────── */}
+        <section className="rounded-3xl bg-gradient-to-br from-yellow-50 to-pink-50 border-2 border-yellow-100 p-5 sm:p-6 text-center space-y-1">
+          <div className="text-3xl">🎈</div>
+          <p className="text-sm sm:text-base text-zinc-600">
+            Gelmen en güzel hediye! 💛 İstersen Umay’ın kitaplığına minik bir kitap getirebilirsin 📚
+            — ama en çok seni görmek mutlu eder.
+          </p>
+        </section>
+
         {/* ───────── PAYLAŞ ───────── */}
         <section className="space-y-3">
           <h2 className="text-center text-lg font-bold text-zinc-700">Sevdiklerini de davet et 💌</h2>
           <ShareButtons shareText={SHARE_TEXT} />
+        </section>
+
+        {/* ───────── HATIRA DEFTERİ ───────── */}
+        <section className="space-y-4 pt-2">
+          <div className="text-center space-y-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold">📖 Hatıra Defteri</h2>
+            <p className="text-sm text-zinc-500">Umay’ın doğum günü kutlama defteri — sen de bir not bırak ✨</p>
+          </div>
+          <GuestbookWall />
         </section>
 
       </div>
