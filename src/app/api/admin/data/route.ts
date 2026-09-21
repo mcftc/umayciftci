@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server"
-import { listEntries } from "@/lib/store"
-import type { GuestEntry } from "@/app/api/guestbook/route"
-import type { RsvpEntry } from "@/app/api/rsvp/route"
+import { listEntries, type GuestEntry, type RsvpEntry } from "@/lib/store"
 
 // Yönetim verisi — sadece doğru anahtarla. Notlar (silme url'siyle) + katılımcılar.
 export const dynamic = "force-dynamic"

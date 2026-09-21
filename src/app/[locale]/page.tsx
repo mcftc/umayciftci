@@ -22,22 +22,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       <div className="max-w-6xl mx-auto space-y-12 md:space-y-20">
 
-        {/* ───────────────── DAVETİYE BANDI ───────────────── */}
-        <Link
-          href={`/${locale}/davetiye`}
-          className="group flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 px-5 py-3 text-center text-white shadow-lg transition-transform hover:scale-[1.02]"
-        >
-          <span className="text-2xl animate-bounce">🎉</span>
-          <span className="text-sm sm:text-base font-bold">
-            {tr
-              ? "Doğum günü partime davetlisin! 22 Ağustos 2026, 13.00 · Tayyare Cafe"
-              : "You're invited to my birthday party! Aug 22, 2026, 1 PM · Tayyare Cafe"}
-          </span>
-          <span className="rounded-full bg-white/25 px-3 py-1 text-xs font-bold whitespace-nowrap group-hover:bg-white/40 transition-colors">
-            {tr ? "Davetiyeyi aç →" : "Open invitation →"}
-          </span>
-        </Link>
-
         {/* ───────────────── HERO ───────────────── */}
         <section className="grid items-center gap-6 md:grid-cols-2 md:gap-10 pt-4">
           {/* Foto */}
@@ -59,7 +43,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 {age} 🎂
               </div>
               <div className="absolute -bottom-3 -left-3 -rotate-6 rounded-full bg-white px-3 py-1 text-xs font-bold text-purple-600 shadow-lg">
-                {tr ? "merhaba dünya 👋" : "hello world 👋"}
+                {tr ? "yürüyorum 👣" : "walking now 👣"}
               </div>
             </div>
           </div>
@@ -79,14 +63,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
             <p className="text-base sm:text-lg text-zinc-600 max-w-md mx-auto md:mx-0">
               {tr
-                ? `Dünyaya geldim ve her şey çok eğlenceli! ${DAYS_EARLY} gün erken geldim çünkü merakımı yenemedim 🚀`
-                : `I'm here and everything is so much fun! I came ${DAYS_EARLY} days early because I couldn't wait 🚀`}
+                ? `1 yaşındayım ve her şey çok daha eğlenceli! ${DAYS_EARLY} gün erken geldim çünkü merakımı yenemedim, hâlâ da yenemiyorum 🚀`
+                : `I'm 1 now and everything is way more fun! I came ${DAYS_EARLY} days early because I couldn't wait — and I still can't 🚀`}
             </p>
 
             <p className="text-sm text-zinc-500 max-w-md mx-auto md:mx-0">
               {tr
-                ? "Müjde! İlk dişim çıktı 🦷✨ Artık gülümsediğimde minik bir parıltı var. Şimdilik işim gülmek, mama yemek, uyumak ve tabii yeni dişimi herkese göstermek 😄"
-                : "Big news — my first tooth popped out 🦷✨ Now there's a little sparkle when I smile. For now my job is giggling, milk, naps, and showing everyone my brand-new tooth 😄"}
+                ? "Müjde! 1 yaşıma girdim 🎂 Yürüme modülü canlıya alındı, artık desteksiz gidiyorum 🚶‍♀️ Donanım da güncellendi: 4 diş! Yeni işim koşturmak, çekmeceleri açmak ve her şeyi dişlerimle test etmek 😄"
+                : "Big news — I turned 1 🎂 The walking module is live, I go solo now 🚶‍♀️ Hardware got an upgrade too: 4 teeth! My new job is sprinting, opening drawers and testing everything with my teeth 😄"}
             </p>
 
             <div className="pt-2">
@@ -140,10 +124,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             {[
               { e: "👶", tr: "İlk nefes", en: "First breath", st: tr ? "tamamlandı" : "done" },
               { e: "😊", tr: "İlk gülümseme", en: "First smile", st: tr ? "tamamlandı" : "done" },
-              { e: "🦷", tr: "İlk diş", en: "First tooth", st: tr ? "çıktı! 🎉" : "popped! 🎉" },
               { e: "🍌", tr: "İlk ek gıda", en: "First solid food", st: tr ? "yumyum" : "yum yum" },
               { e: "🪑", tr: "Desteksiz oturma", en: "Sitting up solo", st: tr ? "başardım" : "nailed it" },
-              { e: "🚼", tr: "Emekleme", en: "Crawling", st: tr ? "beta sürümde" : "in beta" },
+              { e: "🦷", tr: "4 diş", en: "4 teeth", st: tr ? "4/4 kuruldu" : "4/4 installed" },
+              { e: "🚶‍♀️", tr: "Desteksiz yürüme", en: "Walking solo", st: tr ? "tamamlandı 🎉" : "shipped 🎉" },
             ].map((m) => (
               <div key={m.tr} className="flex items-center gap-3 rounded-2xl bg-white/80 px-4 py-3 shadow-sm">
                 <span className="text-2xl">{m.e}</span>
@@ -164,9 +148,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
             {[
               { e: "😄", v: "∞", tr: "Gülücük", en: "Giggles" },
-              { e: "🍼", v: "8/8", tr: "Mama (bugün)", en: "Bottles (today)" },
-              { e: "😴", v: "16s", tr: "Uyku", en: "Sleep" },
-              { e: "🦷", v: days > 180 ? "2" : "0", tr: "Diş", en: "Teeth" },
+              { e: "🍽️", v: "3+2", tr: "Öğün (bugün)", en: "Meals (today)" },
+              { e: "😴", v: "13s", tr: "Uyku", en: "Sleep" },
+              { e: "🦷", v: "4", tr: "Diş", en: "Teeth" },
             ].map((s) => (
               <div key={s.tr} className="rounded-2xl bg-white p-4 text-center shadow-md ring-1 ring-pink-50">
                 <div className="text-3xl">{s.e}</div>
@@ -247,8 +231,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="overflow-hidden">
             <div className="animate-slide text-xs sm:text-sm text-yellow-800">
               {tr
-                ? "🍼 Mama saatleri tıkır tıkır işliyor • 😄 Günün gülücük rekoru kırıldı • 🦷 İlk diş çıktı, kutlama zamanı • 🧸 Ayıcık en iyi arkadaş seçildi • 👏 El çırpma öğrenildi • 😴 Gece uykusu güncellemesi yüklendi • 🐾 Pati dostlara selam •"
-                : "🍼 Milk schedule running smoothly • 😄 New daily giggle record • 🦷 First tooth popped — time to celebrate • 🧸 Teddy elected best friend • 👏 Clapping unlocked • 😴 Night-sleep update installed • 🐾 Shout-out to paw friends •"}
+                ? "🚶‍♀️ Yürüme modülü canlıda, eve tam erişim verildi • 🦷 Diş sayacı 4'e yükseldi, donanım güncellendi • 🎂 1 yaş sürümü sorunsuz yayında • 🏃 Koridorda hız rekoru kırıldı • 🧸 Ayıcık yine en iyi arkadaş seçildi • 📦 Emekleme sürümü arşive kaldırıldı • 😴 Uyku servisi 13 saate optimize edildi • 🐾 Pati dostlara selam •"
+                : "🚶‍♀️ Walking module is live, full house access granted • 🦷 Tooth counter bumped to 4, hardware upgraded • 🎂 Version one-year-old shipped smoothly • 🏃 New hallway speed record set • 🧸 Teddy re-elected best friend • 📦 Crawling build moved to the archive • 😴 Sleep service optimized to 13 hours • 🐾 Shout-out to paw friends •"}
             </div>
           </div>
         </section>

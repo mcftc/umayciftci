@@ -4,7 +4,7 @@ import "../globals.css"
 
 export const metadata: Metadata = {
     title: { default: "Umay'ın Yeri 👶🎉", template: "%s | Umay'ın Yeri" },
-    description: "Merhaba dünya! Ben Umay, 2 Eylül 2025'te 02:00'da dünyaya geldim! 3 gün erken deployment 🚀"
+    description: "Merhaba dünya! Ben Umay, 2 Eylül 2025'te 02:00'da 3 gün erken deploy edildim 🚀 Artık 1 yaşındayım, yürüyorum ve 4 dişim var!"
 }
 
 export default async function LocaleLayout({
@@ -20,13 +20,9 @@ export default async function LocaleLayout({
                 <Link href={`/${locale}`} className="font-bold text-sm sm:text-base md:text-xl hover:scale-110 transition-transform flex items-center gap-1 sm:gap-2 group">
                     <span className="text-2xl sm:text-3xl group-hover:animate-bounce">👶</span>
                     <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">Umay.exe</span>
-                    <span className="text-[10px] sm:text-xs bg-green-300 text-black px-1 sm:px-2 py-0.5 rounded-full animate-pulse">v1.0 LIVE</span>
+                    <span className="text-[10px] sm:text-xs bg-green-300 text-black px-1 sm:px-2 py-0.5 rounded-full animate-pulse">v1.1 LIVE</span>
                 </Link>
                 <nav className="hidden md:flex gap-6 text-sm items-center">
-                    <Link className="hover:text-pink-500 hover:scale-110 transition-all flex items-center gap-1" href={`/${locale}/davetiye`}>
-                        <span className="text-xl">🎉</span>
-                        <span className="font-medium">{locale === 'tr' ? 'Davetiye' : 'Invitation'}</span>
-                    </Link>
                     <Link className="hover:text-purple-500 hover:scale-110 transition-all flex items-center gap-1" href={`/${locale}/games`}>
                         <span className="text-xl">🎮</span>
                         <span className="font-medium">{locale === 'tr' ? 'Oyunlar' : 'Games'}</span>
@@ -50,7 +46,6 @@ export default async function LocaleLayout({
                 </nav>
                 {/* Mobile menu */}
                 <div className="md:hidden flex gap-2 sm:gap-3 items-center">
-                    <Link href={`/${locale}/davetiye`} className="text-xl sm:text-2xl hover:scale-110 transition-transform">🎉</Link>
                     <Link href={`/${locale}/games`} className="text-xl sm:text-2xl hover:scale-110 transition-transform">🎮</Link>
                     <Link href={`/${locale}/donate/umay`} className="text-xl sm:text-2xl hover:scale-110 transition-transform">🎁</Link>
                     <Link href={`/${locale}/donate/haytap`} className="text-xl sm:text-2xl hover:scale-110 transition-transform">🐾</Link>
@@ -67,14 +62,14 @@ export default async function LocaleLayout({
                     <span className="text-xl sm:text-2xl animate-pulse">👶</span>
                     <p className="text-xs sm:text-sm font-medium">
                         {locale === 'tr'
-                            ? "© 2025 Umay Çiftçi - Artık dünyada ve haklarım tam geçerli! 🎉"
-                            : "© 2025 Umay Çiftçi - Now in the world and my rights are fully valid! 🎉"}
+                            ? "© 2026 Umay Çiftçi - 1 yaşındayım, yürüyorum ve haklarım tam geçerli! 🎉"
+                            : "© 2026 Umay Çiftçi - I'm 1, I walk now, and my rights are fully valid! 🎉"}
                     </p>
                 </div>
                 <div className="text-[10px] sm:text-xs text-gray-500">
                     {locale === 'tr'
-                        ? "Bu site karın içinden kodlandı, 2 Eylül 2025'te hastanede deploy edildi. Production ready! 🚀"
-                        : "This site was coded from the womb, deployed at hospital on Sep 2, 2025. Production ready! 🚀"}
+                        ? "Bu site karın içinden kodlandı, 2 Eylül 2025'te hastanede deploy edildi. 1 yıl kesintisiz uptime, 1. yıl güncellemesi yayında: yürüme modülü aktif! 🚀"
+                        : "This site was coded from the womb, deployed at the hospital on Sep 2, 2025. One full year of uptime, year-one update is live: walking module enabled! 🚀"}
                 </div>
                 <div className="flex justify-center gap-2 sm:gap-3 text-[10px] sm:text-xs">
               <span className="bg-green-100 text-green-700 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
@@ -84,7 +79,7 @@ export default async function LocaleLayout({
                 {locale === 'tr' ? "• GDO'suz" : "• GMO-Free"}
               </span>
                     <span className="bg-purple-100 text-purple-700 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
-                {locale === 'tr' ? "• Yeni Doğan" : "• Newborn"}
+                {locale === 'tr' ? "• Yürüyor" : "• Now Walking"}
               </span>
                 </div>
             </div>

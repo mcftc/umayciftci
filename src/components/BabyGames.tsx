@@ -13,7 +13,6 @@ export default function BabyGames({ locale }: BabyGamesProps) {
     const [bubblesPoppedCount, setBubblesPoppedCount] = useState(0)
     const [bubbles, setBubbles] = useState<Array<{id: number, x: number, y: number}>>([])
     const [playTime, setPlayTime] = useState(0)
-    const [showDonationReminder, setShowDonationReminder] = useState(false)
     const playTimeRef = useRef(0)
     const [currentGame, setCurrentGame] = useState(0)
 
@@ -57,15 +56,10 @@ export default function BabyGames({ locale }: BabyGamesProps) {
         const interval = setInterval(() => {
             playTimeRef.current += 1
             setPlayTime(playTimeRef.current)
-
-            // Show donation reminder after 60 seconds
-            if (playTimeRef.current === 60 && !showDonationReminder) {
-                setShowDonationReminder(true)
-            }
         }, 1000)
 
         return () => clearInterval(interval)
-    }, [showDonationReminder])
+    }, [])
 
     // Initialize games
     useEffect(() => {
@@ -397,37 +391,6 @@ export default function BabyGames({ locale }: BabyGamesProps) {
 
     return (
         <div className="space-y-6">
-            {/* Donation Reminder Modal */}
-            {showDonationReminder && (
-                <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-                    <div className="bg-white rounded-2xl p-6 max-w-md text-center animate-bounce">
-                        <div className="text-6xl mb-4">👶</div>
-                        <h3 className="text-xl font-bold mb-2">
-                            {isTurkish ? "Hoop! Yeter oynadın!" : "Whoa! Enough playing!"}
-                        </h3>
-                        <p className="text-sm text-gray-600 mb-4">
-                            {isTurkish
-                                ? "1 dakikadır oynuyorsun! Artık bana bir hediye gönderme zamanı geldi sanırım 😄"
-                                : "You've been playing for 1 minute! I think it's time to send me a gift 😄"}
-                        </p>
-                        <div className="flex gap-3 justify-center">
-                            <Link
-                                href={`/${locale}/donate/umay`}
-                                className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-4 py-2 rounded-lg hover:from-pink-600 hover:to-purple-600 transition-all text-sm"
-                            >
-                                {isTurkish ? "Tamam, hediye göndereceğim! 🎁" : "Ok, I'll send a gift! 🎁"}
-                            </Link>
-                            <button
-                                onClick={() => setShowDonationReminder(false)}
-                                className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-all text-sm"
-                            >
-                                {isTurkish ? "Biraz daha oyun! 😅" : "Just a bit more gaming! 😅"}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
-
             <div className="flex justify-between items-center">
                 <h2 className="text-xl md:text-2xl font-bold">
                     {isTurkish ? "🎮 Umay'ın Oyun Merkezi" : "🎮 Umay's Game Center"}

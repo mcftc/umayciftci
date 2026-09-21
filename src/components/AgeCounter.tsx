@@ -34,12 +34,10 @@ export default function AgeCounter({ locale }: Props) {
     return () => clearInterval(id)
   }, [])
 
-  // Yıl hücresi yalnızca 1+ yaşında görünür. Mount öncesi (p=null) gizli tutuyoruz
-  // ki sonradan eklenince düzen kaymasın — bebek <1 yaş olduğu sürece zaten yok.
-  const showYears = p !== null && p.years > 0
-
+  // Yıl hücresi HER ZAMAN render edilir (mount öncesi "00"). Mount sonrası
+  // koşullu eklenseydi hücre sayısı 5→6 olur ve hidrasyondan sonra satır kayardı.
   const cells: { key: string; n: number | null; label: string }[] = [
-    ...(showYears ? [{ key: "y", n: p!.years, label: t.y }] : []),
+    { key: "y", n: p ? p.years : null, label: t.y },
     { key: "mo", n: p ? p.months : null, label: t.mo },
     { key: "d", n: p ? p.days : null, label: t.d },
     { key: "h", n: p ? p.hours : null, label: t.h },

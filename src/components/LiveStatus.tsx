@@ -7,16 +7,16 @@ import { useEffect, useState } from "react"
 type Status = { emoji: string; tr: string; en: string }
 
 const STATUSES: Status[] = [
-  { emoji: "😴", tr: "Şekerleme molası veriyor", en: "Taking a nap break" },
-  { emoji: "🍼", tr: "Mama keyfi yapıyor", en: "Enjoying some milk" },
+  { emoji: "🚶‍♀️", tr: "Evde devriye turuna çıktı", en: "Out on a patrol lap around the house" },
+  { emoji: "🏃‍♀️", tr: "Koridorda hız denemesi yapıyor", en: "Testing top speed in the hallway" },
+  { emoji: "🦷", tr: "4 dişiyle her şeyi test ediyor", en: "Testing everything with all 4 teeth" },
+  { emoji: "🗄️", tr: "Çekmeceleri tek tek boşaltıyor", en: "Emptying every drawer one by one" },
   { emoji: "😄", tr: "Sebepsiz yere gülüyor", en: "Giggling for no reason" },
-  { emoji: "👀", tr: "Dünyayı keşfediyor", en: "Exploring the world" },
-  { emoji: "🧸", tr: "Ayıcığıyla sohbet ediyor", en: "Chatting with her teddy" },
-  { emoji: "🦷", tr: "Yeni dişini test ediyor", en: "Testing her new tooth" },
-  { emoji: "🤹", tr: "Oyuncakları fırlatıyor", en: "Tossing toys around" },
+  { emoji: "🧸", tr: "Ayıcığına brifing veriyor", en: "Briefing her teddy" },
+  { emoji: "🤹", tr: "Oyuncakları fırlatıyor, fizik testi", en: "Tossing toys around — physics test" },
+  { emoji: "🗣️", tr: "Yeni kelimeleri derliyor", en: "Compiling new words" },
+  { emoji: "😴", tr: "Şekerleme molası veriyor", en: "Taking a nap break" },
   { emoji: "🐾", tr: "Pati dostlarını düşünüyor", en: "Thinking of her paw friends" },
-  { emoji: "🎵", tr: "Agu agu şarkısı söylüyor", en: "Singing the goo-goo song" },
-  { emoji: "👏", tr: "El çırpma pratiği yapıyor", en: "Practicing clapping" },
 ]
 
 export default function LiveStatus({ locale }: { locale: string }) {

@@ -2,6 +2,10 @@ import { list, put, del } from "@vercel/blob"
 
 // Blob tabanlı basit kayıt deposu — her kayıt ayrı bir blob (yarış/çakışma yok).
 
+// Davetiye bölümü kaldırıldı; arşiv kayıtlarının tipleri gizli yönetim paneli için burada yaşamaya devam ediyor.
+export type GuestEntry = { id: string; name: string; message: string; at: number }
+export type RsvpEntry = { id: string; firstName: string; lastName: string; at: number }
+
 export async function saveEntry(prefix: string, id: string, data: unknown) {
   await put(`${prefix}${id}.json`, JSON.stringify(data), {
     access: "public",
